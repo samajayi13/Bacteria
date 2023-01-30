@@ -16,7 +16,8 @@ public class BacteriaSolution {
     private static void beginSimulation() {
         List<String> liveCells = getLiveCells();
         List<String> survivingCells = findSurvivingCells(liveCells);
-        survivingCells = reviveDeadCells(survivingCells);       
+        survivingCells = reviveDeadCells(survivingCells);
+        outputNewGeneration(survivingCells);
     }
 
     public static List<String> getLiveCells() {
@@ -82,8 +83,14 @@ public class BacteriaSolution {
         }
         return count;
     }
+   
+    private static void outputNewGeneration(List<String> survivingCells) {
+        for (String cell : survivingCells) {
+            System.out.println(cell);
+        }
 
-
+        System.out.println("end");
+    }
 
    public static boolean isPositionValid(int row, int column){
        return  column >= 0 && column < pretriDish.COLUMNS && row >= 0 && row < pretriDish.ROWS;
