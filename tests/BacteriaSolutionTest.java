@@ -8,10 +8,13 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BacteriaSolutionTest {
-    BacteriaSolution simulation = new BacteriaSolution();
+    private BacteriaSolution simulation = new BacteriaSolution();
+
+    public BacteriaSolutionTest(){
+        simulation.pretriDish.grid = getMockDish();
+    }
     @Test
     public void givenLiveCellsFindSurvingCells(){
-        simulation.pretriDish.grid = getMockDish();
         List<String> livingCells = new ArrayList<>(Arrays.asList("1,2","2,2","3,2"));
         List<String> expected = new ArrayList<>(Arrays.asList("2,2"));
         List<String> actual = simulation.findSurvivingCells(livingCells);
@@ -19,8 +22,16 @@ class BacteriaSolutionTest {
     }
 
     @Test
+    public void reviveDeadCellsFromDish(){
+         List<String> survivingCells = new ArrayList<>(Arrays.asList("2,2"));
+         List<String> expected = new  ArrayList<>(Arrays.asList("2,1","2,2","2,3"));
+         List<String> actual = simulation.reviveDeadCells(survivingCells);
+         
+         //ignores order of the list when comparing the expected vs acutal 
+         assertTrue(expected.size() == actual.size() && expected.containsAll(actual) && actual.containsAll(expected));
+    }
+    @Test
     public void givenCellGetNumberOfLivingNeighbors(){
-        simulation.pretriDish.grid = getMockDish();
         int expected = 1;
         int actual = simulation.getNumberOfLivingNeighbors(2,1);
         assertEquals(expected,actual);
@@ -44,7 +55,6 @@ class BacteriaSolutionTest {
     @Test
 
     public void givenNeighbourCheckIfAlive(){
-        simulation.pretriDish.grid = getMockDish();
         boolean expected = true;
         boolean actual = simulation.isNeighborAlive(0,1);
         assertEquals(expected,actual);
