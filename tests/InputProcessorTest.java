@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InputProcessorTest {
+    
     @Test
     public void Get_Column_From_Input(){
         InputProcessor inputProcessor = new InputProcessor();
