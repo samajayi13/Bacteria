@@ -13,8 +13,7 @@ class BacteriaSolutionTest {
     public void givenLiveCellsFindSurvingCells(){
         simulation.pretriDish.grid = getMockDish();
         List<String> livingCells = new ArrayList<>(Arrays.asList("1,2","2,2","3,2"));
-        System.out.println("living cells" + livingCells);
-        List<String> expected = new ArrayList<>(Arrays.asList("2,1","2,2","2,3"));
+        List<String> expected = new ArrayList<>(Arrays.asList("2,2"));
         List<String> actual = simulation.findSurvivingCells(livingCells);
         assertEquals(expected,actual);
     }
@@ -24,7 +23,6 @@ class BacteriaSolutionTest {
         simulation.pretriDish.grid = getMockDish();
         int expected = 1;
         int actual = simulation.getNumberOfLivingNeighbors(2,1);
-
         assertEquals(expected,actual);
     }
 
@@ -54,7 +52,8 @@ class BacteriaSolutionTest {
 
 
     private int[][] getMockDish(){
-        return new int[][] {  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+        return new int[][] {
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
