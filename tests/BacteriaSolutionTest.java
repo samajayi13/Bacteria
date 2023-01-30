@@ -13,6 +13,7 @@ class BacteriaSolutionTest {
     public BacteriaSolutionTest(){
         simulation.pretriDish.grid = getMockDish();
     }
+    
     @Test
     public void givenLiveCellsFindSurvingCells(){
         List<String> livingCells = new ArrayList<>(Arrays.asList("1,2","2,2","3,2"));
@@ -36,6 +37,7 @@ class BacteriaSolutionTest {
         boolean actual = simulation.isCellAlive("2,2");
         assertEquals(expected,actual);
     }
+    
     @Test
     public void givenCellGetNumberOfLivingNeighbors(){
         int expected = 1;
@@ -63,7 +65,6 @@ class BacteriaSolutionTest {
         boolean actual = simulation.isNeighborAlive(0,1);
         assertEquals(expected,actual);
     }
-
 
     private int[][] getMockDish(){
         return new int[][] {
