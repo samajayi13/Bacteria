@@ -48,5 +48,21 @@ public class BacteriaSolution {
 
         return survivingCells;
     }
+   
+    public static List<String> reviveDeadCells(List<String> survivingCells) {
+        for (int i = 0; i < pretriDish.ROWS; i++) {
+            for (int j = 0; j < pretriDish.COLUMNS; j++) {
+                int liveNeighbors = getNumberOfLivingNeighbors(i, j);
+               
+                int cell = pretriDish.grid[i][j];
+                boolean isCellRevivable = cell == 0 && liveNeighbors == 3;
 
+                if (isCellRevivable) {
+                    survivingCells.add((i + 1) + "," + (j + 1));
+                }
+            }
+        }
+
+        return survivingCells;
+    }
 }
