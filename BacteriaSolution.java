@@ -14,6 +14,7 @@ public class BacteriaSolution {
    
     public static void beginSimulation() {
         List<String> liveCells = getLiveCells();
+        List<String> survivingCells = findSurvivingCells(liveCells);
     }
    
     public static List<String> getLiveCells() {
@@ -29,6 +30,23 @@ public class BacteriaSolution {
         }
        
         return liveCells;
+    }
+   
+    public static List<String> findSurvivingCells(List<String> liveCells) {
+        List<String> survivingCells = new ArrayList<>();
+
+        for (String cell : liveCells) {
+            int row = inputProcessor.getRow(cell);
+            int column = inputProcessor.getColumn(cell);
+            int numOfLivingNeighbors = getNumberOfLivingNeighbors(row - 1, column - 1);
+
+            if (numOfLivingNeighbors == 2 || numOfLivingNeighbors == 3) {
+                String position = row + "," + column;
+                survivingCells.add(row + "," + column);
+            }
+        }
+
+        return survivingCells;
     }
 
 }
