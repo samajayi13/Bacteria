@@ -17,4 +17,22 @@ class BacteriaSolutionTest {
         List<String> actual = simulation.findSurvivingCells(livingCells);
         assertEquals(expected,actual);
     }
+    
+    @Test
+    public void givenCellGetNumberOfLivingNeighbors(){
+        simulation.pretriDish.grid = new int[][] {  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+        int expected = 1;
+        int actual = simulation.getNumberOfLivingNeighbors(2,1);
+
+        assertEquals(expected,actual);
+    }
 }
