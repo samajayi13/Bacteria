@@ -9,7 +9,6 @@ public class BacteriaSolution {
    private static InputProcessor inputProcessor = new InputProcessor();
    private static Scanner scanner  = new Scanner(System.in);
 
-
     public static void main(String[] args) {
        beginSimulation();
    }
@@ -89,7 +88,6 @@ public class BacteriaSolution {
 
         System.out.println("end");
     }
-
 
     //Checks all 8 possible neighbours to see if any is alive
     public static int getNumberOfLivingNeighbors(int row, int col) {
