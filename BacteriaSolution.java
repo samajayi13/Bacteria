@@ -11,5 +11,24 @@ public class BacteriaSolution {
     public static void main(String[] args) {
        beginSimulation();
    }
+   
+    public static void beginSimulation() {
+        List<String> liveCells = getLiveCells();
+    }
+   
+    public static List<String> getLiveCells() {
+        String line = scanner.nextLine();
+        List<String> liveCells = new ArrayList<>();
+
+        while (!line.equals("end")) {
+            int row = inputProcessor.getRow(line);
+            int column = inputProcessor.getColumn(line);
+            pretriDish.insertBacteria(row,column);
+            liveCells.add(row + "," + column);
+            line = scanner.nextLine();
+        }
+       
+        return liveCells;
+    }
 
 }
