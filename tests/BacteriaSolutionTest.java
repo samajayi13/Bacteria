@@ -26,9 +26,15 @@ class BacteriaSolutionTest {
          List<String> survivingCells = new ArrayList<>(Arrays.asList("2,2"));
          List<String> expected = new  ArrayList<>(Arrays.asList("2,1","2,2","2,3"));
          List<String> actual = simulation.reviveDeadCells(survivingCells);
-         
-         //ignores order of the list when comparing the expected vs acutal 
+
+         //ignores order of the list when comparing the expected vs acutal
          assertTrue(expected.size() == actual.size() && expected.containsAll(actual) && actual.containsAll(expected));
+    }
+
+    @Test void givenCellTestIfAlive(){
+        boolean expected = true;
+        boolean actual = simulation.isCellAlive("2,2");
+        assertEquals(expected,actual);
     }
     @Test
     public void givenCellGetNumberOfLivingNeighbors(){
@@ -44,7 +50,6 @@ class BacteriaSolutionTest {
         assertEquals(expected,actual);
     }
 
-
     @Test
     public void givenNeighbourPositionCheckIfInValid(){
         boolean expected = true;
@@ -53,7 +58,6 @@ class BacteriaSolutionTest {
     }
 
     @Test
-
     public void givenNeighbourCheckIfAlive(){
         boolean expected = true;
         boolean actual = simulation.isNeighborAlive(0,1);
